@@ -5,6 +5,9 @@ from math import exp
 from feature_functions import *
 import argparse
 import os
+'''
+Generate features using get_features() in /code/feature_functions.py.
+'''
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inputs: --data: path to data file; \

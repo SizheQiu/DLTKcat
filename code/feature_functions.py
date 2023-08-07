@@ -16,6 +16,10 @@ import re
 
 
 def get_seq_func(ID):
+    '''Query protein sequence from uniprot.
+    :param ID: 'string' uniprot id of protein
+    :return 'string' protein sequence
+    '''
     url = "https://www.uniprot.org/uniprot/%s.fasta" % ID
     try :
         data = requests.get(url)
@@ -28,6 +32,10 @@ def get_seq_func(ID):
     return seq
 
 def get_mw(protID):
+    '''query protein molar weight from uniprot
+    :param protID: 'string' uniprot id of protein
+    :return 'int' molar weight
+    '''
     data = urlopen("http://www.uniprot.org/uniprot/" + protID + ".txt").read().decode()
     result = data.split('SQ   ')[-1]
     mw = int(result.split(';')[1].strip().split()[0])
@@ -35,6 +43,10 @@ def get_mw(protID):
 
 
 def get_smiles_func(substrate):
+    '''query SMILES string of the substrate from PubChem
+    :param substrate: 'string' substrate name
+    :return 'string' SMILES string
+    '''
     try :
         url = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/%s/property/CanonicalSMILES/TXT'%substrate
         req = requests.get(url)
@@ -47,6 +59,11 @@ def get_smiles_func(substrate):
     return smiles
 
 def convert_input(path, enz_col, sub_col ):
+    '''convert raw input in the CSV file to SMILES strings and sequences
+    :param path: 'string' the path of the CSV file
+    :param enz_col: 'string' column name for enzyme uniprot ids
+    :param sub_col: 'string' column name for substrate names
+    '''
     table = pd.read_csv( path )
     seqs, smiles, mws = [],[],[]
     for i in range( len(table.index) ):
@@ -64,7 +81,7 @@ def convert_input(path, enz_col, sub_col ):
     
 def scale_minmax(array, x_min, x_max):
     '''
-    Scale additional features (i.e., temperature)
+    Normalize the feature as x-x_min/x_max-x_min.
     '''
     scaled_array = [(x-x_min)/(x_max-x_min) for x in array]
     return scaled_array
@@ -224,18 +241,3 @@ def get_features( data_path, output_path, radius, ngram, has_dict, dict_path, ha
         dump_pickle( edge_dict, os.path.join(dict_path, 'edge_dict.pkl'))
         dump_pickle( word_dict, os.path.join(dict_path, 'word_dict.pkl'))
         
-
-
-# def process(task, dataset):
-#     radius, ngram = 2, 3
-
-#     if not os.path.isdir(os.path.join('../data', task, dataset)):
-#         preprocess(task, dataset)
-
-#     for name in ['train', 'test']:
-#         input_path = os.path.join('../data', task, dataset, name)
-#         output_path = os.path.join('../datasets', task, dataset, name)
-#         precessing(input_path, output_path, radius, ngram)
-
-#     dump_dictionary(fingerprint_dict, os.path.join('../datasets', task, dataset, 'atom_dict'))
-#     dump_dictionary(word_dict, os.path.join('../datasets', task, dataset, 'amino_dict'))
