@@ -29,3 +29,6 @@ python predict.py --model_path [default = /data/performances/model_latentdim=40_
 6. Seaborn statistical data visualization:https://seaborn.pydata.org/index.html
 7. Escher: https://github.com/zakandrewking/escher
 ## Citation
+DLTKcat: deep learning based prediction of temperature dependent enzyme turnover rates
+Sizhe Qiu, Simiao Zhao, Aidong Yang
+bioRxiv 2023.08.10.552798; doi: https://doi.org/10.1101/2023.08.10.552798
