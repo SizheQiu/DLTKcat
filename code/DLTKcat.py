@@ -44,7 +44,7 @@ class GATLayer(nn.Module):
 
 class DLTKcat(nn.Module):
     def __init__(self, n_atom, n_amino, comp_dim, prot_dim, gat_dim, num_head, dropout, alpha, window, layer_cnn, latent_dim, layer_out ):
-        super(BACPIwT, self).__init__()
+        super(DLTKcat, self).__init__()
         '''
         n_atom here stands for number of atom_features
         '''
