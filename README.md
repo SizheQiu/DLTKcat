@@ -1,5 +1,5 @@
 # DLTKcat
-Deep learning based prediction of temperature dependent enzyme turnover rates
+DLTKcat v1.0: Deep learning based prediction of temperature dependent enzyme turnover rates
 ## Dataset curation from SABIO-RK and BRENDA
 The dataset curation process is in `/code/GetData.ipynb`.
 ## How to use DLTKcat ?
@@ -13,6 +13,10 @@ python predict.py --model_path [default = /data/performances/model_latentdim=40_
 --param_dict_pkl [default = /data/hyparams/param_2.pkl] <br>
 --input [input.csv] --output [output file name] <br>
 --has_label [default = False]
+```
+5. Get attention weights of protein residues:<br>
+```
+python get_attention.py --input [input.csv] --output [output file name]
 ```
 ## Case studies
 1. Mutants of Pyrococcus furiosus Ornithine Carbamoyltransferase via directed evolution (`/data/PFOCT/`,`/code/CaseStudy_PFOCT.ipynb`).<br>
