@@ -36,3 +36,6 @@ python get_attention.py --input [input.csv] --output [output file name]
 DLTKcat: deep learning based prediction of temperature dependent enzyme turnover rates
 Sizhe Qiu, Simiao Zhao, Aidong Yang
 bioRxiv 2023.08.10.552798; doi: https://doi.org/10.1101/2023.08.10.552798
+### Issue
+Users might encounter "Index out of range" error at `amino_vector = self.embedding_layer_amino(amino)`.<br>
+The potential solution is +1 to `n_atom, n_amino` in model parameters, and train a new model.
