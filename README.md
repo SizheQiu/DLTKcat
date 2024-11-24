@@ -25,7 +25,7 @@ python get_attention.py --input [input.csv] --output [output file name]
     Ref: https://doi.org/10.1038/srep14199,  https://doi.org/10.1111/j.1365-2672.2004.02418.x
 
 ## Dependencies
-1. Pytorch: https://pytorch.org/
+1. Pytorch (1.8.1+cu101): https://pytorch.org/
 2. Scikit-learn: https://scikit-learn.org/
 3. RDKit:https://www.rdkit.org/
 4. BRENDApyrser: https://github.com/Robaina/BRENDApyrser
