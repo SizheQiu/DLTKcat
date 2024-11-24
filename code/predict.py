@@ -58,6 +58,7 @@ if __name__ == "__main__":
                                         dropout, alpha, window, layer_cnn, latent_dim, layer_out )
     M.to(device);
     M.load_state_dict(torch.load( str( args.model_path ), map_location=device  ))
+    M.eval();
     # Prep input
     if os.path.isdir('../data/pred/temp'):
         os.system('rm -rf ../data/pred/temp')
